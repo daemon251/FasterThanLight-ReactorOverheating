@@ -1,0 +1,22 @@
+<metadata>
+  <title><![CDATA[ Reactor Overheating ]]></title>
+  <threadUrl><![CDATA[  ]]></threadUrl>
+  <author><![CDATA[ daemon47 ]]></author>
+  <version><![CDATA[ 1.0 ]]></version>
+  <description>
+<![CDATA[
+This mod adds a new mechanic to the game: Reactor overheating. Reactor overheating only applies to the player, 
+and makes it so that actively powered systems and the use of systems cause heat, and if a threshold is met, power will be taken from the reactor.
+Power is incrementally taken, and ranges from taxing 1 power bar to all but 1 bar of your power. More information is provided ingame.
+
+The amount of heat dissipation is something that can upgraded.
+
+This mod is intended to be a proof-of-concept (though it is fully functional), and may not be balanced correctly especially if ran with overhaul mods. In it's current state, it only makes the game harder.
+It attempts to cut down on late-game scaling and also serves to nerf cloaking and hacking in a new way (it also makes vanilla Stealth B even worse :D).
+
+This mod has limited compatibility with others. I will attempt to make it compatible with MV and INS+, however, issues may arise with other mods (issues can occur if the start beacon event name is different from normal).
+
+You are free to use this idea in your mods if you wish.
+]]>
+  </description>
+</metadata>

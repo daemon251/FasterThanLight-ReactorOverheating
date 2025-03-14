@@ -1,0 +1,40 @@
+<FTL>
+ 
+<version>^1.16.2</version>
+
+<defaults>
+	<beaconType_hideVanillaLabel>true</beaconType_hideVanillaLabel>
+	<checkCargo>false</checkCargo>
+	<choiceRequiresCrew>false</choiceRequiresCrew>
+</defaults>
+
+<customTabs enabled="true">
+	<tab name="Heat" windowPath="statusUI/HeatTab" hasUndo="true"/>
+</customTabs>
+
+<!-- Scripts
+
+Load scripts (Lua files) see online documentation & examples (and lua files included in hyperspace.ftl) on how to use the interface
+Other mods must append to this list as only one `<scripts>` is allowed but multiple `<script>` entries are allowed.
+Load order is the order it appears in the XML here.
+Internal hyperspace scripts & modules are loaded before any of these
+
+Note: it is recommended you make a folder like `data/scripts/` or `scripts/` but there is no actual restriction on a prefix.
+-->
+
+<mod:findLike type="scripts" limit="1">
+	<mod-append:script>data/scripts/mainscript.lua</mod-append:script>
+</mod:findLike>
+
+<!--<titleScreen logo_x="862" logo_y="7" enabled="true">
+	
+</titleScreen>-->
+
+<console enabled="true"/> 
+
+<!-- event button not used anymore because of 1.17 changes, so these events dont ever get ran but here they are anyway-->
+<mod:findLike type="events">
+	<mod-append:eventFile>StorageUpgradeHeat</mod-append:eventFile> <!-- run for default only -->
+</mod:findLike>
+
+</FTL>

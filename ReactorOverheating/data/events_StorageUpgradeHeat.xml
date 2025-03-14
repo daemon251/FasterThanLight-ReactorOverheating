@@ -1,0 +1,242 @@
+<FTL>
+
+<event name="OPTION_INVALID">
+	<text>You should never see this.</text>
+	<item_modify>
+		<item type="scrap" min="-3000000" max="-3000000"/>
+	</item_modify>
+</event>
+
+<event name="INSTALL_OVERHEAT_UPGRADES">
+	<text>Upgrade the heat dissipation of the reactor. The base dissipation is -1.5[style[color:CC6600]]hu[[/style]]/s.</text>
+	<choice>
+		<text>Exit.</text>
+		<event/>
+	</choice>
+	<choice req="pilot" lvl="1" blue="true">
+		<text>Overheat Explanation.</text>
+		<event load="OVERHEAT_EXPLAIN"/>
+	</choice>
+	<choice hidden="true" req="ITEM OVERHEAT_RECHARGE_UPGRADE" lvl="1" max_lvl="1" blue="false">
+		<text>External Heat Dissipation Bonus Upgrades : 1 active </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="ITEM OVERHEAT_RECHARGE_UPGRADE" lvl="2" max_lvl="2" blue="false">
+		<text>External Heat Dissipation Bonus Upgrades : 2 active </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="ITEM OVERHEAT_RECHARGE_UPGRADE" lvl="3" max_lvl="3" blue="false">
+		<text>External Heat Dissipation Bonus Upgrades : 3 active </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="1" blue="false">
+		<text>Performance Upgrade 1 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="2" blue="false">
+		<text>Performance Upgrade 2 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="3" blue="false">
+		<text>Performance Upgrade 3 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="4" blue="false">
+		<text>Performance Upgrade 4 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="5" blue="false">
+		<text>Performance Upgrade 5 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="6" blue="false">
+		<text>Performance Upgrade 6 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="7" blue="false">
+		<text>Performance Upgrade 7 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="8" blue="false">
+		<text>Performance Upgrade 8 : -0.5[style[color:CC6600]]hu[[/style]] / s [Installed] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<!--<choice req="OVERHEAT_RECHARGE_UPGRADE" lvl="8" max_lvl="8" blue="false" hidden="true">
+		<text>No more performance upgrades available.</text>
+		<event load="OPTION_INVALID"/>
+	</choice>-->
+	
+	<!--probably better way to do this -->
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="0" blue="false">
+		<text>Performance Upgrade 1 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-20" max="-20"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="1" max_lvl="1" blue="false">
+		<text>Performance Upgrade 2 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-20" max="-20"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="2" max_lvl="2" blue="false">
+		<text>Performance Upgrade 3 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-25" max="-25"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="3" max_lvl="3" blue="false">
+		<text>Performance Upgrade 4 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-30" max="-30"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="4" max_lvl="4" blue="false">
+		<text>Performance Upgrade 5 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-35" max="-35"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="5" max_lvl="5" blue="false">
+		<text>Performance Upgrade 6: -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-45" max="-45"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="6" max_lvl="6" blue="false">
+		<text>Performance Upgrade 7 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-55" max="-55"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="7" max_lvl="7" blue="false">
+		<text>Performance Upgrade 8 : -0.5[style[color:CC6600]]hu[[/style]] / s</text>
+		<event>
+			<text>Installing the upgrade...</text>
+			<item_modify>
+				<item type="scrap" min="-65" max="-65"/>
+			</item_modify>
+			<hiddenAug>OVERHEAT_RECHARGE_UPGRADE_HIDDEN</hiddenAug>
+			<choice>
+				<text>Continue</text>
+				<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+			</choice>
+		</event>
+	</choice>
+	
+	<!--not installed -->
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text>Performance Upgrade 2 : -0.5[style[color:CC6600]]hu[[/style]] / s [20 Scrap]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="1" blue="false" hidden="true">
+		<text>Performance Upgrade 3 : -0.5[style[color:CC6600]]hu[[/style]] / s [25 Scrap]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="2" blue="false" hidden="true">
+		<text>Performance Upgrade 4 : -0.5[style[color:CC6600]]hu[[/style]] / s [30 Scrap]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="3" blue="false" hidden="true">
+		<text>Performance Upgrade 5 : -0.5[style[color:CC6600]]hu[[/style]] / s [35 Scrap]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="4" blue="false" hidden="true">
+		<text>Performance Upgrade 6 : -0.5[style[color:CC6600]]hu[[/style]] / s [45 Scrap]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="5" blue="false" hidden="true">
+		<text>Performance Upgrade 7 : -0.5[style[color:CC6600]]hu[[/style]] / s [55 Scrap] </text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="6" blue="false" hidden="true">
+		<text>Performance Upgrade 8 : -0.5[style[color:CC6600]]hu[[/style]] / s [65 Scrap]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="7" blue="false" hidden="true">
+		<text>Performance Upgrade 9 : -0.75[style[color:CC6600]]hu[[/style]] / s [Only Possible With External Upgrades]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="8" blue="false" hidden="true">
+		<text>Performance Upgrade 10 : -0.75[style[color:CC6600]]hu[[/style]] / s [Only Possible With External Upgrades]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice req="OVERHEAT_RECHARGE_UPGRADE_HIDDEN" lvl="0" max_lvl="9" blue="false" hidden="true">
+		<text>Performance Upgrade 11 : -0.75[style[color:CC6600]]hu[[/style]] / s [Only Possible With External Upgrades]</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+</event>
+
+<event name="LOAD_INSTALL_OVERHEAT_UPGRADES">
+	<loadEvent>INSTALL_OVERHEAT_UPGRADES</loadEvent>
+</event>
+
+<event name="OVERHEAT_EXPLAIN">
+	<text>Overheat is measured in [style[color:CC6600]]Heat Units[[/style]] ([style[color:CC6600]]hu[[/style]]). For every 3[style[color:CC6600]]hu[[/style]] accumulated, the reactor temporarily [style[color:CCCC00]]loses 1 reactor bar[[/style]]. The reactor dissipates 1.5[style[color:CC6600]]hu[[/style]]/s by default, and upgrades improve this (shown in the upgrade menu).
+	Every [style[color:00FF00]]GREEN[[/style]] / [style[color:0060DD]]BLUE[[/style]] reactor bar in use creates 0.2[style[color:CC6600]]hu[[/style]]/s. Cloaking, Hacking, and mind control respectively create 0.5, 0.5, and 0.2 [style[color:CC6600]]hu[[/style]]/s when active. Cloaking and hacking each halve the dissipation rate when active.
+	Cloaking, hacking, teleporting, and mind control respectively create 5.0, 2.5, 2.5, and 2.5 flat [style[color:CC6600]]hu[[/style]] when activated.
+	When the total heat rate is below zero (net losing heat), it is halved (this makes it twice as hard to lose heat than to create it.)</text>
+	<choice>
+		<text>Return</text>
+		<event load="LOAD_INSTALL_OVERHEAT_UPGRADES"/>
+	</choice>
+</event>
+	
+
+</FTL>

@@ -1,5 +1,5 @@
 # Reactor Overheating
-This mod hasn't been released yet due to troubles getting an account on the subset forums. But it is in a working form as of now
+This mod hasn't been released yet due to troubles getting an account on the subset forums, but it is in a working form as of now.
 
 This mod adds a mechanic to the game: Overheat. 
 

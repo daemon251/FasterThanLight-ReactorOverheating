@@ -7,7 +7,7 @@
 --The GUI has to be updated by hand if you change a value that is normally denoted by - here to not be zero 
 
 CONSTANT_PlayerEnabled = true --whether player heat is enabled
-CONSTANT_EnemyEnabled = true --whether enemy heat is enabled
+CONSTANT_EnemyEnabled = false --whether enemy heat is enabled
 
 --descriptions for variables are below
 --these are not related to the ingame difficulties
@@ -941,7 +941,6 @@ function HeatLogicOnTickPlayer(shipManager)
         elseif PowerLossPlayer ~= math.floor(CurrentHeatPlayer / CurrentHeatCapacityPlayer) then --detect change in PowerLoss. iTempPowerCap is altered every tick to plasma storm, which is why plasma storms have seperate code
             local difference = math.floor(math.abs(PowerLossPlayer - math.floor(CurrentHeatPlayer / CurrentHeatCapacityPlayer)))
             --this sucks
-            print("aa");
             if PowerLossPlayer > math.floor(CurrentHeatPlayer / CurrentHeatCapacityPlayer) then Hyperspace.PowerManager.GetPowerManager(shipIndex).iTempPowerCap = Hyperspace.PowerManager.GetPowerManager(shipIndex).iTempPowerCap + difference end
             if PowerLossPlayer < math.floor(CurrentHeatPlayer / CurrentHeatCapacityPlayer) then Hyperspace.PowerManager.GetPowerManager(shipIndex).iTempPowerCap = Hyperspace.PowerManager.GetPowerManager(shipIndex).iTempPowerCap - difference end
         end

@@ -17,4 +17,4 @@ Right now the mod is strictly a nerf to the player, heat is implemented for enem
 
 # USE
 
-This mod is designed as a thought experiment, so if anyone wants to incorporate any idea or code from this mod into yours, feel free to do so as I would like to see this implemented in a more organized way.
+This mod is designed as a thought experiment, so if anyone wants to incorporate any idea or code from this mod into yours, feel free to do so.

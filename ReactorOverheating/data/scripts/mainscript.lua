@@ -13,10 +13,10 @@ CONSTANT_EnemyEnabled = false --whether enemy heat is enabled
 --these are not related to the ingame difficulties
 NormalHeatSettings = 
 {
-    CONSTANT_CapacityScrapCosts =   {"-" ,   15,   20,   25,   30,   35,   40,   45,   55, "-"},
+    CONSTANT_CapacityScrapCosts =   {"-" ,   10,   10,   15,   15,   20,   25,   30,   50, "-"},
     CONSTANT_DissipationScrapCosts ={"-" ,   20,   25,   30,   35,   40,   45,   50,   60, "-"},
     CONSTANT_HeatDissipationRates = {1.50, 2.00, 2.50, 3.00, 3.50, 4.00, 4.50, 5.00, 5.50, 0.01},
-    CONSTANT_HeatCapacities =       {2.00, 2.50, 3.00, 3.50, 4.00, 4.50, 5.00, 5.50, 6.00, 0.01},
+    CONSTANT_HeatCapacities =       {1.50, 2.00, 2.50, 3.00, 3.50, 4.00, 4.50, 5.00, 6.00, 0.01},
     CONSTANT_NetNegativeHeatRateMult = 0.50,
 
     CONSTANT_GreenBar = 0.20,
@@ -49,10 +49,10 @@ NormalHeatSettings =
 }
 HardHeatSettings = 
 {
-    CONSTANT_CapacityScrapCosts =   {"-" ,   15,   20,   25,   30,   35,   40,   45,   55, "-"},
+    CONSTANT_CapacityScrapCosts =   {"-" ,   10,   10,   15,   15,   20,   25,   30,   50, "-"},
     CONSTANT_DissipationScrapCosts ={"-" ,   20,   25,   30,   35,   40,   45,   50,   60, "-"},
     CONSTANT_HeatDissipationRates = {1.50, 2.00, 2.50, 3.00, 3.50, 4.00, 4.50, 5.00, 5.50, 0.01},
-    CONSTANT_HeatCapacities =       {1.60, 2.00, 2.40, 2.80, 3.20, 3.60, 4.00, 4.40, 4.80, 0.01},
+    CONSTANT_HeatCapacities =       {1.20, 1.60, 2.00, 2.40, 2.80, 3.20, 3.60, 4.00, 4.80, 0.01},
     CONSTANT_NetNegativeHeatRateMult = 0.333,
 
     CONSTANT_GreenBar = 0.20,
@@ -85,10 +85,10 @@ HardHeatSettings =
 }
 UnfairHeatSettings = 
 {
-    CONSTANT_CapacityScrapCosts =   {"-" ,   15,   20,   25,   30,   35,   40,   45,   55, "-"},
+    CONSTANT_CapacityScrapCosts =   {"-" ,   10,   10,   15,   15,   20,   25,   30,   50, "-"},
     CONSTANT_DissipationScrapCosts ={"-" ,   20,   25,   30,   35,   40,   45,   50,   60, "-"},
     CONSTANT_HeatDissipationRates = {1.50, 2.00, 2.40, 2.80, 3.20, 3.60, 4.00, 4.40, 4.80, 0.01},
-    CONSTANT_HeatCapacities =       {1.60, 2.00, 2.40, 2.80, 3.20, 3.60, 4.00, 4.40, 4.80, 0.01},
+    CONSTANT_HeatCapacities =       {1.20, 1.60, 2.00, 2.40, 2.80, 3.20, 3.60, 4.00, 4.80, 0.01},
     CONSTANT_NetNegativeHeatRateMult = 0.333,
 
     CONSTANT_GreenBar = 0.20,
@@ -739,27 +739,35 @@ end
 function HackingHeatLogic(shipManager, HackingInLastTick)
     local hackcloakUpgrade = shipManager:HasAugmentation("OVERHEAT_HACKCLOAK_UPGRADE")
     local hackingSystem = shipManager.hackingSystem
-    if hackingSystem and hackingSystem.bHacking then 
+	local hackingRN = false
+	if hackingSystem then if hackingSystem.effectTimer.first > 0 and hackingSystem.effectTimer.first < hackingSystem.effectTimer.second then hackingRN = true end end
+    if hackingSystem and hackingRN then 
         if HackingInLastTick == false then
             CurrentHeatPlayer = CurrentHeatPlayer + CONSTANT_ActivatedHackingHeatPlayer
         end
         CurrentHeatAddRatePlayer = CurrentHeatAddRatePlayer + CONSTANT_CurrentlyHackingValuesPlayer[1]
         if hackcloakUpgrade == 0 then CurrentHeatDissipationRatePlayer = CurrentHeatDissipationRatePlayer * CONSTANT_CurrentlyHackingValuesPlayer[2] end
     end
-    if hackingSystem then HackingInLastTick = hackingSystem.bHacking end
+    if hackingSystem 
+	then 
+		HackingInLastTick = hackingRN
+	end
+	--print(hackingSystem.effectTimer.first .. " " .. hackingSystem.effectTimer.second)
     return HackingInLastTick
 end
 
 function MindHeatLogic(shipManager, MindInLastTick)
     local mindSystem = shipManager.mindSystem
-    if mindSystem and mindSystem.controlTimer.first > 0 then 
+	local mindRN = false
+	if mindSystem then if mindSystem.controlTimer.first > 0 and mindSystem.controlTimer.first < mindSystem.controlTimer.second then mindRN = true end end
+    if mindSystem and mindRN then 
         if MindInLastTick == false then
             CurrentHeatPlayer = CurrentHeatPlayer + CONSTANT_ActivatedMindHeatPlayer
         end
         CurrentHeatAddRatePlayer = CurrentHeatAddRatePlayer + CONSTANT_CurrentlyMindValuesPlayer[1]
         CurrentHeatDissipationRatePlayer = CurrentHeatDissipationRatePlayer * CONSTANT_CurrentlyMindValuesPlayer[2]
     end
-    if mindSystem then MindInLastTick = mindSystem.controlTimer.first > 0 end
+    if mindSystem then MindInLastTick = mindRN end
     return MindInLastTick
 end
 

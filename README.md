@@ -1,3 +1,6 @@
+# NOTE
+This mod seems to not work after some Hyperspace update, I probably won't fix it. Also it's coded like shit, don't even bother forking this if you care.
+
 # Reactor Overheating
 This mod hasn't been released yet due to troubles getting an account on the subset forums, but it is in a working form as of now.
 
